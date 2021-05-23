@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import {  RouterModule, Routes } from '@angular/router'
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 const routes: Routes = [
   {
@@ -12,11 +16,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 ];
-
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
+  
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,3 +1,38 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<body>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-6 border">
+    <h2>Lista de notas</h2>
+<ul class="list-group">
+  <li (click)="view_Note(n)" class="list-group-item" *ngFor="let n of my_notes">{{n.title}},{{n.description}},{{n.estado}}
+  </li>
+  <a class="btn btn-primary btn-block" (click)="addNote()" >Nota nueva</a>
+  
+</ul>
+</div>
+<div class="col-12 col-sm-6 border" *ngIf="show_form">
+  <h2>Las notas</h2>
+      <div class="col-12 col-sm-6 border">
+        <article class="card h-100 bg-info">
+        <input class="form-control" type="text" placeholder="*titulo*" [(ngModel)]="note.title" required/>
+        <br/>
+        <textarea class="form-control" placeholder="*descripcion de la nota*" [(ngModel)]="note.description" required></textarea>
+        <hr/>
+        <select id="s1" required >
+          <option value="?" selected="estado" ></option>
+          <option value="abierto">abierto</option>
+          <option value="en proceso">en proceso</option>
+          <option value="cerrado">cerrado</option>
+          </select>
+      </article>
+      <a class="btn btn-secondary btn-block" (click)="cancelNote()" >Cancelar</a>
+      <a class="btn btn-success btn-block" (click)="createNote()" >Crear Nota</a>
+      
+  </div>
+    <a class="btn btn-danger btn-block" *ngIf="editing" (click)="deleteNote()" >Eliminar Nota</a>
+    </div>
+  </div>
+  
+</div>
+</body>
